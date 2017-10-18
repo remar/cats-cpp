@@ -1,0 +1,22 @@
+Cats++ Backlog
+==============
+
+* Init
+* Redraw
+* SetBackgroundColor
+* LoadSprite
+* CreateSpriteInstance
+* RemoveSpriteInstance
+* ShowSprite
+* SetSpritePosition
+* SetAnimation
+* Frame index -1 should hide sprite during frame duration
+* SetupTileLayer
+* LoadTileset
+* SetTile
+* SetScroll
+
+
+Done
+====
+
