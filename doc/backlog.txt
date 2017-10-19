@@ -1,7 +1,6 @@
 Cats++ Backlog
 ==============
 
-* Init
 * Redraw
 * SetBackgroundColor
 * LoadSprite
@@ -20,3 +19,4 @@ Cats++ Backlog
 Done
 ====
 
+* Init
