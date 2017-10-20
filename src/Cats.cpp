@@ -33,4 +33,8 @@ namespace Cats {
     SDL_RenderSetLogicalSize (renderer, width, height);
     SDL_SetRenderDrawColor (renderer, 0x00, 0x00, 0x00, 0xFF);
   }
+
+  void Redraw(float delta) {
+    SDL_RenderPresent(renderer);
+  }
 }

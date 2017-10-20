@@ -1,7 +1,6 @@
 Cats++ Backlog
 ==============
 
-* Redraw
 * SetBackgroundColor
 * LoadSprite
 * CreateSpriteInstance
@@ -14,6 +13,12 @@ Cats++ Backlog
 * LoadTileset
 * SetTile
 * SetScroll
+
+
+Work in progress
+================
+
+* Redraw
 
 
 Done
