@@ -1,7 +1,6 @@
 Cats++ Backlog
 ==============
 
-* SetBackgroundColor
 * LoadSprite
 * CreateSpriteInstance
 * RemoveSpriteInstance
@@ -24,4 +23,5 @@ Work in progress
 Done
 ====
 
+* SetBackgroundColor
 * Init

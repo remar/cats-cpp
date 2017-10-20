@@ -35,6 +35,11 @@ namespace Cats {
   }
 
   void Redraw(float delta) {
+    SDL_RenderClear(renderer);
     SDL_RenderPresent(renderer);
+  }
+
+  void SetBackgroundColor(unsigned char red, unsigned char green, unsigned char blue) {
+    SDL_SetRenderDrawColor(renderer, red, green, blue, 0xFF);
   }
 }
