@@ -1,36 +1,20 @@
 #include "SpriteDefinition.h"
-#include "rapidjson/document.h"
 #include "Util.h"
+#include "gason.h"
 #include <stdexcept>
+#include <string.h>
 
 #include <iostream>
 
 namespace Cats {
-  namespace {
-    void verify(bool shouldBeTrue, std::string filename, std::string errorMessage) {
-      if(!shouldBeTrue) {
-	throw std::runtime_error("[" + filename + "] " + errorMessage);
-      }
-    }
-  }
-
   SpriteDefinition::SpriteDefinition(std::string filename) {
-    std::string jsontext = ReadFile(filename);
+    char *jsontext = strdup(ReadFile(filename).c_str());
+    char *endptr;
+    JsonValue value;
+    JsonAllocator allocator;
 
-    rapidjson::Document d;
-    d.Parse(jsontext.c_str());
-    if(d.HasParseError()) {
-      throw std::runtime_error("Parse error in " + filename);
-    }
-
-    if(!d.HasMember("animations")) {
-	throw std::runtime_error("[" + filename + "] Missing \"animations\" key");
-    }
-
-    auto animations = d["animations"].GetObject();
-    for(auto iter = animations.MemberBegin();iter != animations.MemberEnd();
-	++iter) {
-      std::cout << iter->name.GetString() << "\n";
-    }
+    jsonParse(jsontext, &endptr, &value, allocator);
+    JsonNode* node = value.toNode();
+    std::cout << node->key << "\n";
   }
 }
