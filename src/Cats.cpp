@@ -15,6 +15,7 @@ namespace Cats {
     if(SDL_Init(SDL_INIT_VIDEO) != 0) {
       throw_runtime_error();
     }
+
     if((window = SDL_CreateWindow("Cats++",
 				  SDL_WINDOWPOS_UNDEFINED,
 				  SDL_WINDOWPOS_UNDEFINED,
@@ -22,10 +23,14 @@ namespace Cats {
 				  SDL_WINDOW_SHOWN)) == 0) {
       throw_runtime_error();
     }
+
     if((renderer = SDL_CreateRenderer(window,
 				      -1,
 				      SDL_RENDERER_ACCELERATED)) == 0) {
       throw_runtime_error();
     }
+
+    SDL_RenderSetLogicalSize (renderer, width, height);
+    SDL_SetRenderDrawColor (renderer, 0x00, 0x00, 0x00, 0xFF);
   }
 }
