@@ -5,12 +5,6 @@ OFILES := $(CPPFILES:.cpp=.o)
 
 libcats.a: $(OFILES)
 	$(AR) rvs $@ $^
-	mkdir -p ../lib
-	mv $@ ../lib
-	mkdir -p ../include
-	cp Cats.h ../include
 
 clean:
-	@rm *.o
-	@rm -rf ../lib
-	@rm -rf ../include
+	@rm *.o libcats.a
