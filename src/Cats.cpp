@@ -1,11 +1,15 @@
 #include "Cats.h"
 #include <SDL.h>
 #include <stdexcept>
+#include <map>
+#include "SpriteDefinition.h"
+#include "Util.h"
 
 namespace Cats {
   namespace {
     SDL_Window *window;
     SDL_Renderer *renderer;
+    std::map<std::string,SpriteDefinition*> spriteDefinitions;
     void throw_runtime_error() {
       throw std::runtime_error(SDL_GetError());
     }
@@ -41,5 +45,10 @@ namespace Cats {
 
   void SetBackgroundColor(unsigned char red, unsigned char green, unsigned char blue) {
     SDL_SetRenderDrawColor(renderer, red, green, blue, 0xFF);
+  }
+
+  void LoadSprite(std::string filename) {
+    std::string name = FilenameToName(filename);
+    spriteDefinitions[name] = new SpriteDefinition(filename);
   }
 }

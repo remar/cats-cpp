@@ -1,7 +1,6 @@
 Cats++ Backlog
 ==============
 
-* LoadSprite
 * CreateSpriteInstance
 * RemoveSpriteInstance
 * ShowSprite
@@ -17,6 +16,7 @@ Cats++ Backlog
 Work in progress
 ================
 
+* LoadSprite
 * Redraw
 
 
