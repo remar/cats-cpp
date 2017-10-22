@@ -73,4 +73,10 @@ namespace Cats {
     spriteInstances[spriteId] = new SpriteInstance(spriteDefinitions[spritename]);
     return spriteId;
   }
+
+  void RemoveSpriteInstance(int spriteId) {
+    if(spriteInstances.count(spriteId) == 1) {
+      spriteInstances.erase(spriteId);
+    }
+  }
 }

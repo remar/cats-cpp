@@ -11,6 +11,7 @@ namespace Cats {
   void SetBackgroundColor(unsigned char red, unsigned char green, unsigned char blue);
   void LoadSprite(std::string filename);
   int CreateSpriteInstance(std::string spritename);
+  void RemoveSpriteInstance(int spriteId);
 }
 
 #endif
