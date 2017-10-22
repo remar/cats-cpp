@@ -15,6 +15,13 @@ namespace Cats {
 
     jsonParse(jsontext, &endptr, &value, allocator);
     JsonNode* node = value.toNode();
-    std::cout << node->key << "\n";
+
+    value = node->value;
+    for(auto anim : value) {
+      JsonNode *animDef = (anim->value).toNode();
+      animations[anim->key] = new Animation(anim->value, filename);
+    }
+
+    free(jsontext);
   }
 }

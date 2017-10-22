@@ -4,6 +4,7 @@
 #include <map>
 #include "SpriteDefinition.h"
 #include "Util.h"
+#include "ImageCache.h"
 
 namespace Cats {
   namespace {
@@ -14,7 +15,9 @@ namespace Cats {
       throw std::runtime_error(SDL_GetError());
     }
   }
-  
+
+  ImageCache imageCache;
+
   void Init(int width, int height) {
     if(SDL_Init(SDL_INIT_VIDEO) != 0) {
       throw_runtime_error();
@@ -33,6 +36,7 @@ namespace Cats {
 				      SDL_RENDERER_ACCELERATED)) == 0) {
       throw_runtime_error();
     }
+    imageCache.ConnectRenderer(renderer);
 
     SDL_RenderSetLogicalSize (renderer, width, height);
     SDL_SetRenderDrawColor (renderer, 0x00, 0x00, 0x00, 0xFF);

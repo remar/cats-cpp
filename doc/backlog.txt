@@ -1,6 +1,7 @@
 Cats++ Backlog
 ==============
 
+* Error check LoadSprite
 * CreateSpriteInstance
 * RemoveSpriteInstance
 * ShowSprite

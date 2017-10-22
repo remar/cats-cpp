@@ -1,10 +1,28 @@
 // -*- mode: c++ -*-
 
 #include "gason.h"
+#include <vector>
+#include <string>
+#include <SDL.h>
 
 namespace Cats {
+  struct Frame {
+    int index;
+    int duration;
+  };
+
   class Animation {
   public:
-    Animation(JsonNode* json);
+    Animation(JsonValue value, std::string filename);
+
+  private:
+    std::vector<Frame> frames;
+    bool looping;
+    SDL_Texture *image;
+    int tileWidth;
+    int tileHeight;
+
+    void AddImage(JsonValue value, std::string basepath);
+    void AddFrames(JsonValue value);
   };
 }

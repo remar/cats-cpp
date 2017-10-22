@@ -11,6 +11,13 @@ namespace Cats {
     return filename.substr(afterlastslash, len);
   }
 
+  std::string GetBasePath(std::string filename) {
+    if(filename.find("/") == std::string::npos) {
+      return "";
+    }
+    return filename.substr(0, filename.rfind("/") + 1);
+  }
+
   std::string ReadFile(std::string filename) {
     std::ifstream s(filename);
     std::stringstream buffer;

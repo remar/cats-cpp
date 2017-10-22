@@ -4,5 +4,6 @@
 
 namespace Cats {
   std::string FilenameToName(std::string filename);
+  std::string GetBasePath(std::string filename);
   std::string ReadFile(std::string filename);
 }

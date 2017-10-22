@@ -1,2 +1,3 @@
 src/*.o
 src/libcats.a
+src/*.d
