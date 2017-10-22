@@ -22,7 +22,7 @@ namespace Cats {
     int tileWidth;
     int tileHeight;
 
-    void AddImage(JsonValue value, std::string basepath);
-    void AddFrames(JsonValue value);
+    void AddImage(JsonValue value, std::string filename);
+    void AddFrames(JsonValue value, std::string filename);
   };
 }

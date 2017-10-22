@@ -1,7 +1,6 @@
 Cats++ Backlog
 ==============
 
-* Error check LoadSprite
 * CreateSpriteInstance
 * RemoveSpriteInstance
 * ShowSprite
@@ -17,12 +16,13 @@ Cats++ Backlog
 Work in progress
 ================
 
-* LoadSprite
 * Redraw
 
 
 Done
 ====
 
+* LoadSprite
+* Error check LoadSprite
 * SetBackgroundColor
 * Init

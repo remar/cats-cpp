@@ -4,8 +4,6 @@
 #include <stdexcept>
 #include <string.h>
 
-#include <iostream>
-
 namespace Cats {
   SpriteDefinition::SpriteDefinition(std::string filename) {
     char *jsontext = strdup(ReadFile(filename).c_str());
@@ -13,8 +11,14 @@ namespace Cats {
     JsonValue value;
     JsonAllocator allocator;
 
-    jsonParse(jsontext, &endptr, &value, allocator);
+    if(jsonParse(jsontext, &endptr, &value, allocator) != JSON_OK) {
+      throw std::runtime_error("Unable to parse " + filename);
+    }
     JsonNode* node = value.toNode();
+
+    if(strcmp(node->key, "animations") != 0) {
+      throw std::runtime_error("Object doesn't have \"animations\" key! (" + filename + ")");
+    }
 
     value = node->value;
     for(auto anim : value) {
