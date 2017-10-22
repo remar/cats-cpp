@@ -1,10 +1,10 @@
 #include "Animation.h"
 #include "ImageCache.h"
 #include "Util.h"
-#include <iostream>
 #include <string.h>
 #include <list>
 #include <stdexcept>
+#include <SDL.h>
 
 namespace Cats {
   extern ImageCache imageCache;
@@ -28,6 +28,21 @@ namespace Cats {
     if(!gotImage || !gotFrames) {
       throw std::runtime_error("Incomplete animation specification in " + filename);
     }
+
+    src.w = dest.w = tileWidth;
+    src.h = dest.h = tileHeight;
+    src.y = 0;
+  }
+
+  void Animation::Draw(SDL_Renderer *renderer, int x, int y, int frame) {
+    int index = frames[frame].index;
+    if(index == -1) {
+      return; // Hide sprite instance during frame duration
+    }
+    src.x = tileWidth * index;
+    dest.x = x;
+    dest.y = y;
+    SDL_RenderCopy(renderer, image, &src, &dest);
   }
 
   void Animation::AddImage(JsonValue value, std::string filename) {

@@ -6,6 +6,8 @@
 
 namespace Cats {
   SpriteDefinition::SpriteDefinition(std::string filename) {
+    defaultAnimation = "";
+
     char *jsontext = strdup(ReadFile(filename).c_str());
     char *endptr;
     JsonValue value;
@@ -22,8 +24,10 @@ namespace Cats {
 
     value = node->value;
     for(auto anim : value) {
-      JsonNode *animDef = (anim->value).toNode();
       animations[anim->key] = new Animation(anim->value, filename);
+      if(defaultAnimation == "") {
+	defaultAnimation = anim->key;
+      }
     }
 
     free(jsontext);

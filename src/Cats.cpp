@@ -1,16 +1,20 @@
 #include "Cats.h"
+#include "ImageCache.h"
+#include "SpriteDefinition.h"
+#include "SpriteInstance.h"
+#include "Util.h"
 #include <SDL.h>
 #include <stdexcept>
 #include <map>
-#include "SpriteDefinition.h"
-#include "Util.h"
-#include "ImageCache.h"
 
 namespace Cats {
   namespace {
     SDL_Window *window;
     SDL_Renderer *renderer;
     std::map<std::string,SpriteDefinition*> spriteDefinitions;
+    std::map<int,SpriteInstance*> spriteInstances;
+    int nextSpriteId = 0;
+
     void throw_runtime_error() {
       throw std::runtime_error(SDL_GetError());
     }
@@ -43,7 +47,14 @@ namespace Cats {
   }
 
   void Redraw(float delta) {
+    int deltaMillis = (int)(delta * 1000);
+
     SDL_RenderClear(renderer);
+
+    for(auto const& spriteInstance : spriteInstances) {
+      (spriteInstance.second)->Draw(renderer, deltaMillis);
+    }
+
     SDL_RenderPresent(renderer);
   }
 
@@ -54,5 +65,12 @@ namespace Cats {
   void LoadSprite(std::string filename) {
     std::string name = FilenameToName(filename);
     spriteDefinitions[name] = new SpriteDefinition(filename);
+  }
+
+  int CreateSpriteInstance(std::string spritename) {
+    int spriteId = nextSpriteId;
+    nextSpriteId++;
+    spriteInstances[spriteId] = new SpriteInstance(spriteDefinitions[spritename]);
+    return spriteId;
   }
 }

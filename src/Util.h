@@ -1,5 +1,8 @@
 // -*- mode: c++ -*-
 
+#ifndef UTIL_H
+#define UTIL_H
+
 #include <string>
 
 namespace Cats {
@@ -7,3 +10,5 @@ namespace Cats {
   std::string GetBasePath(std::string filename);
   std::string ReadFile(std::string filename);
 }
+
+#endif

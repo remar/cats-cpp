@@ -1,12 +1,10 @@
 Cats++ Backlog
 ==============
 
-* CreateSpriteInstance
 * RemoveSpriteInstance
 * ShowSprite
 * SetSpritePosition
 * SetAnimation
-* Frame index -1 should hide sprite during frame duration
 * SetupTileLayer
 * LoadTileset
 * SetTile
@@ -22,6 +20,8 @@ Work in progress
 Done
 ====
 
+* Frame index -1 should hide sprite during frame duration
+* CreateSpriteInstance
 * LoadSprite
 * Error check LoadSprite
 * SetBackgroundColor

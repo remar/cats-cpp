@@ -1,5 +1,8 @@
 // -*- mode: c++ -*-
 
+#ifndef ANIMATION_H
+#define ANIMATION_H
+
 #include "gason.h"
 #include <vector>
 #include <string>
@@ -14,6 +17,10 @@ namespace Cats {
   class Animation {
   public:
     Animation(JsonValue value, std::string filename);
+    int GetFrameDuration(int index) { return frames[index].duration; }
+    int GetLength() { return frames.size(); }
+    bool GetLooping() { return looping; }
+    void Draw(SDL_Renderer *renderer, int x, int y, int frame);
 
   private:
     std::vector<Frame> frames;
@@ -21,8 +28,11 @@ namespace Cats {
     SDL_Texture *image;
     int tileWidth;
     int tileHeight;
+    SDL_Rect src, dest;
 
     void AddImage(JsonValue value, std::string filename);
     void AddFrames(JsonValue value, std::string filename);
   };
 }
+
+#endif

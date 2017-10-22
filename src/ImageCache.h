@@ -1,5 +1,8 @@
 // -*- mode: c++ -*-
 
+#ifndef IMAGE_CACHE_H
+#define IMAGE_CACHE_H
+
 #include <SDL.h>
 #include <string>
 #include <map>
@@ -15,3 +18,5 @@ namespace Cats {
     std::map<std::string,SDL_Texture*> cache;
   };
 }
+
+#endif
