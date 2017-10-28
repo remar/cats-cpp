@@ -1,7 +1,6 @@
 Cats++ Backlog
 ==============
 
-* SetAnimation
 * SetupTileLayer
 * LoadTileset
 * SetTile
@@ -17,6 +16,7 @@ Work in progress
 Done
 ====
 
+* SetAnimation
 * SetSpritePosition
 * ShowSprite
 * RemoveSpriteInstance

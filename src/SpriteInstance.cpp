@@ -13,4 +13,8 @@ namespace Cats {
     animationState.Animate(deltaMillis);
     animationState.Draw(renderer, x, y);
   }
+
+  void SpriteInstance::SetAnimation(std::string animation) {
+    animationState.SetAnimation(spriteDefinition->GetAnimation(animation));
+  }
 }

@@ -12,6 +12,7 @@ namespace Cats {
   public:
     SpriteDefinition(std::string filename);
     Animation* GetDefaultAnimation() {return animations[defaultAnimation];}
+    Animation* GetAnimation(std::string animation) {return animations[animation];}
 
   private:
     std::map<std::string,Animation*> animations;

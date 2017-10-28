@@ -13,6 +13,7 @@ namespace Cats {
     void Draw(SDL_Renderer *renderer, int deltaMillis);
     void SetVisible(bool show) {visible = show;}
     void SetPosition(int x, int y) {this->x = x; this->y = y;}
+    void SetAnimation(std::string animation);
 
   private:
     SpriteDefinition *spriteDefinition;

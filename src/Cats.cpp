@@ -91,4 +91,8 @@ namespace Cats {
       spriteInstances[spriteId]->SetPosition(x, y);
     }
   }
+
+  void SetAnimation(int spriteId, std::string animation) {
+    spriteInstances[spriteId]->SetAnimation(animation);
+  }
 }
