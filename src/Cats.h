@@ -13,6 +13,7 @@ namespace Cats {
   int CreateSpriteInstance(std::string spritename);
   void RemoveSpriteInstance(int spriteId);
   void ShowSprite(int spriteId, bool show);
+  void SetSpritePosition(int spriteId, int x, int y);
 }
 
 #endif

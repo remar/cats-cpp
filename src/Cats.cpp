@@ -85,4 +85,10 @@ namespace Cats {
       spriteInstances[spriteId]->SetVisible(show);
     }
   }
+
+  void SetSpritePosition(int spriteId, int x, int y) {
+    if(spriteInstances.count(spriteId) == 1) {
+      spriteInstances[spriteId]->SetPosition(x, y);
+    }
+  }
 }
