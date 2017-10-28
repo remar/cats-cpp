@@ -79,4 +79,10 @@ namespace Cats {
       spriteInstances.erase(spriteId);
     }
   }
+
+  void ShowSprite(int spriteId, bool show) {
+    if(spriteInstances.count(spriteId) == 1) {
+      spriteInstances[spriteId]->SetVisible(show);
+    }
+  }
 }

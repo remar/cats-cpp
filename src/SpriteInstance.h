@@ -11,6 +11,7 @@ namespace Cats {
   public:
     SpriteInstance(SpriteDefinition *spriteDef);
     void Draw(SDL_Renderer *renderer, int deltaMillis);
+    void SetVisible(bool show) {visible = show;}
 
   private:
     SpriteDefinition *spriteDefinition;
