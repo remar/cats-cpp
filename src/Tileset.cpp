@@ -2,6 +2,8 @@
 #include "Tileset.h"
 #include "Util.h"
 #include "gason.h"
+#include <cmath>
+#include <cstring>
 #include <stdexcept>
 
 namespace Cats {
@@ -24,6 +26,27 @@ namespace Cats {
     }
 
     AddImage(node->value, filename);
+
+    free(jsontext);
+
+    SetupSources();
+  }
+
+  Tileset::~Tileset() {
+    for(int i = 0;i < sourcesWidth * sourcesHeight;i++) {
+      if(sources[i] != nullptr) {
+	delete sources[i];
+      }
+    }
+    delete[] sources;
+  }
+
+  TileSource* Tileset::GetTileSource(int x, int y) {
+    int index = y * sourcesWidth + x;
+    if(sources[index] == nullptr) {
+      sources[index] = new TileSource(image, x * width, y * height, width, height);
+    }
+    return sources[index];
   }
 
   void Tileset::AddImage(JsonValue value, std::string filename) {
@@ -47,5 +70,18 @@ namespace Cats {
     if(!gotPath || !gotWidth || !gotHeight) {
       throw std::runtime_error("Incomplete image specification in " + filename);
     }
+  }
+
+  void Tileset::SetupSources() {
+    uint format;
+    int access;
+    int textureWidth, textureHeight;
+    SDL_QueryTexture(image, &format, &access, &textureWidth, &textureHeight);
+
+    sourcesWidth = std::ceil(((double)textureWidth) / width);
+    sourcesHeight = std::ceil(((double)textureHeight) / height);
+    sources = new TileSource*[sourcesWidth * sourcesHeight];
+
+    memset(sources, 0, sourcesWidth * sourcesHeight * sizeof(TileSource*));
   }
 }

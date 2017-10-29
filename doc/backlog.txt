@@ -1,19 +1,19 @@
 Cats++ Backlog
 ==============
 
-* SetTile
 * SetScroll
-
+* Document API in Cats.h using Doxygen
 
 Work in progress
 ================
 
-* Redraw
 
 
 Done
 ====
 
+* Redraw
+* SetTile
 * LoadTileset
 * Throw exception if spriteId is missing
 * Use unique_ptr when managing pointers stored in maps

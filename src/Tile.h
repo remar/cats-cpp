@@ -10,6 +10,8 @@ namespace Cats {
   public:
     Tile();
     void Setup(int x, int y, int width, int height);
+    void Draw(SDL_Renderer *renderer, int xOffset, int yOffset);
+    void Set(SDL_Texture *image, SDL_Rect src);
 
   private:
     SDL_Texture *image;

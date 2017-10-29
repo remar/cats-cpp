@@ -57,6 +57,10 @@ namespace Cats {
 
     SDL_RenderClear(renderer);
 
+    if(tileLayer != nullptr) {
+      tileLayer->Draw(renderer);
+    }
+
     for(auto const& spriteInstance : spriteInstances) {
       (spriteInstance.second)->Draw(renderer, deltaMillis);
     }
@@ -106,5 +110,11 @@ namespace Cats {
   void LoadTileset(std::string filename) {
     std::string name = FilenameToName(filename);
     tilesets[name] = std::unique_ptr<Tileset>(new Tileset(filename));
+  }
+
+  void SetTile(int x, int y, std::string tileset, int tileX, int tileY) {
+    if(tileLayer != nullptr) {
+      tileLayer->SetTile(x, y, tilesets[tileset]->GetTileSource(tileX, tileY));
+    }
   }
 }
