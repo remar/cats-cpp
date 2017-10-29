@@ -79,21 +79,15 @@ namespace Cats {
   }
 
   void RemoveSpriteInstance(int spriteId) {
-    if(spriteInstances.count(spriteId) == 1) {
-      spriteInstances.erase(spriteId);
-    }
+    spriteInstances.erase(spriteId);
   }
 
   void ShowSprite(int spriteId, bool show) {
-    if(spriteInstances.count(spriteId) == 1) {
-      spriteInstances[spriteId]->SetVisible(show);
-    }
+    spriteInstances[spriteId]->SetVisible(show);
   }
 
   void SetSpritePosition(int spriteId, int x, int y) {
-    if(spriteInstances.count(spriteId) == 1) {
-      spriteInstances[spriteId]->SetPosition(x, y);
-    }
+    spriteInstances[spriteId]->SetPosition(x, y);
   }
 
   void SetAnimation(int spriteId, std::string animation) {
