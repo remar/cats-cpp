@@ -3,6 +3,7 @@
 #include "SpriteDefinition.h"
 #include "SpriteInstance.h"
 #include "TileLayer.h"
+#include "Tileset.h"
 #include "Util.h"
 
 #include <SDL.h>
@@ -18,6 +19,7 @@ namespace Cats {
     std::map<int,std::unique_ptr<SpriteInstance>> spriteInstances;
     int nextSpriteId = 0;
     TileLayer *tileLayer = nullptr;
+    std::map<std::string,std::unique_ptr<Tileset>> tilesets;
 
     void throw_runtime_error() {
       throw std::runtime_error(SDL_GetError());
@@ -99,5 +101,10 @@ namespace Cats {
       delete tileLayer;
     }
     tileLayer = new TileLayer(width, height, tileWidth, tileHeight);
+  }
+
+  void LoadTileset(std::string filename) {
+    std::string name = FilenameToName(filename);
+    tilesets[name] = std::unique_ptr<Tileset>(new Tileset(filename));
   }
 }

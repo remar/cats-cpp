@@ -16,6 +16,7 @@ namespace Cats {
   void SetSpritePosition(int spriteId, int x, int y);
   void SetAnimation(int spriteId, std::string animation);
   void SetupTileLayer(int width, int height, int tileWidth, int tileHeight);
+  void LoadTileset(std::string filename);
 }
 
 #endif

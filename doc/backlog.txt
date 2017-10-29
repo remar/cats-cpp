@@ -1,7 +1,6 @@
 Cats++ Backlog
 ==============
 
-* LoadTileset
 * SetTile
 * SetScroll
 
@@ -15,6 +14,7 @@ Work in progress
 Done
 ====
 
+* LoadTileset
 * Throw exception if spriteId is missing
 * Use unique_ptr when managing pointers stored in maps
 * SetupTileLayer
