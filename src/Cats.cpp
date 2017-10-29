@@ -2,7 +2,9 @@
 #include "ImageCache.h"
 #include "SpriteDefinition.h"
 #include "SpriteInstance.h"
+#include "TileLayer.h"
 #include "Util.h"
+
 #include <SDL.h>
 #include <stdexcept>
 #include <map>
@@ -14,6 +16,7 @@ namespace Cats {
     std::map<std::string,SpriteDefinition*> spriteDefinitions;
     std::map<int,SpriteInstance*> spriteInstances;
     int nextSpriteId = 0;
+    TileLayer *tileLayer = nullptr;
 
     void throw_runtime_error() {
       throw std::runtime_error(SDL_GetError());
@@ -94,5 +97,12 @@ namespace Cats {
 
   void SetAnimation(int spriteId, std::string animation) {
     spriteInstances[spriteId]->SetAnimation(animation);
+  }
+
+  void SetupTileLayer(int width, int height, int tileWidth, int tileHeight) {
+    if(tileLayer != nullptr) {
+      delete tileLayer;
+    }
+    tileLayer = new TileLayer(width, height, tileWidth, tileHeight);
   }
 }

@@ -1,7 +1,7 @@
 Cats++ Backlog
 ==============
 
-* SetupTileLayer
+* Use unique_ptr when managing pointers stored in maps
 * LoadTileset
 * SetTile
 * SetScroll
@@ -16,6 +16,7 @@ Work in progress
 Done
 ====
 
+* SetupTileLayer
 * SetAnimation
 * SetSpritePosition
 * ShowSprite
