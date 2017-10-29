@@ -74,7 +74,7 @@ namespace Cats {
   int CreateSpriteInstance(std::string spritename) {
     int spriteId = nextSpriteId;
     nextSpriteId++;
-    spriteInstances[spriteId] = std::unique_ptr<SpriteInstance>(new SpriteInstance(spriteDefinitions[spritename].get()));
+    spriteInstances[spriteId] = std::unique_ptr<SpriteInstance>(new SpriteInstance(spriteDefinitions.at(spritename).get()));
     return spriteId;
   }
 
@@ -83,15 +83,15 @@ namespace Cats {
   }
 
   void ShowSprite(int spriteId, bool show) {
-    spriteInstances[spriteId]->SetVisible(show);
+    spriteInstances.at(spriteId)->SetVisible(show);
   }
 
   void SetSpritePosition(int spriteId, int x, int y) {
-    spriteInstances[spriteId]->SetPosition(x, y);
+    spriteInstances.at(spriteId)->SetPosition(x, y);
   }
 
   void SetAnimation(int spriteId, std::string animation) {
-    spriteInstances[spriteId]->SetAnimation(animation);
+    spriteInstances.at(spriteId)->SetAnimation(animation);
   }
 
   void SetupTileLayer(int width, int height, int tileWidth, int tileHeight) {
