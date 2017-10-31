@@ -18,6 +18,7 @@ namespace Cats {
   void SetupTileLayer(int width, int height, int tileWidth, int tileHeight);
   void LoadTileset(std::string filename);
   void SetTile(int x, int y, std::string tileset, int tileX, int tileY);
+  void SetScroll(int x, int y);
 }
 
 #endif

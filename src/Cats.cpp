@@ -117,4 +117,10 @@ namespace Cats {
       tileLayer->SetTile(x, y, tilesets[tileset]->GetTileSource(tileX, tileY));
     }
   }
+
+  void SetScroll(int x, int y) {
+    if(tileLayer != nullptr) {
+      tileLayer->SetScroll(x, y);
+    }
+  }
 }

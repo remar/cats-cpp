@@ -14,6 +14,7 @@ namespace Cats {
     ~TileLayer();
     void Draw(SDL_Renderer *renderer);
     void SetTile(int x, int y, TileSource *source);
+    void SetScroll(int x, int y);
 
   private:
     Tile* tiles;
@@ -21,6 +22,8 @@ namespace Cats {
     int height;
     int tileWidth;
     int tileHeight;
+    int offsetX;
+    int offsetY;
   };
 }
 
