@@ -12,5 +12,9 @@ libcats.a: $(OFILES)
 %.o: %.cpp Makefile
 	@$(CXX) $(CXXFLAGS) -MMD -MP -c $< -o $@
 
+doc:
+	doxygen ../doc/api/Doxyfile
+
 clean:
 	@rm -f *.o libcats.a *.d *~
+	@(cd ../doc/api && rm -rf html latex doxygen_sqlite3.db)
