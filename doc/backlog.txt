@@ -1,16 +1,15 @@
 Cats++ Backlog
 ==============
 
-* Document API in Cats.h using Doxygen
 
 Work in progress
 ================
 
 
-
 Done
 ====
 
+* Document API in Cats.h using Doxygen
 * SetScroll
 * Redraw
 * SetTile

@@ -1,3 +1,6 @@
 src/*.o
 src/libcats.a
 src/*.d
+doc/api/*.db
+doc/api/html
+doc/api/latex
