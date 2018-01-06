@@ -168,6 +168,9 @@ namespace Cats {
   /* TODO: documentation */
   void PauseAnimation(int spriteId, bool on);
 
+  /* TODO: documentation */
+  void PauseAnimations(bool on);
+
   /** \fn void SetupTileLayer(int width, int height, int tileWidth, int tileHeight)
 
       \brief Setup a tile background.

@@ -104,6 +104,12 @@ namespace Cats {
     spriteInstances.at(spriteId)->SetPause(on);
   }
 
+  void PauseAnimations(bool on) {
+    for(auto const& spriteInstance : spriteInstances) {
+      (spriteInstance.second)->SetPause(on);
+    }
+  }
+
   void SetupTileLayer(int width, int height, int tileWidth, int tileHeight) {
     if(tileLayer != nullptr) {
       delete tileLayer;
