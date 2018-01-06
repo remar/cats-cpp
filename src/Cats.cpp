@@ -108,6 +108,10 @@ namespace Cats {
     spriteInstances.at(spriteId)->SetPosition(x, y);
   }
 
+  void MoveSprite(int spriteId, int deltaX, int deltaY) {
+    spriteInstances.at(spriteId)->Move(deltaX, deltaY);
+  }
+
   void SetAnimation(int spriteId, std::string animation) {
     spriteInstances.at(spriteId)->SetAnimation(animation);
   }

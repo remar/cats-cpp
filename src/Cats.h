@@ -161,6 +161,9 @@ namespace Cats {
    */
   void SetSpritePosition(int spriteId, int x, int y);
 
+  /* TODO: documentation */
+  void MoveSprite(int spriteId, int deltaX, int deltaY);
+
   /** \fn void SetAnimation(int spriteId, std::string animation)
 
       \brief Sets the sprite instances animation.
