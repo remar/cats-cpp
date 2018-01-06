@@ -26,7 +26,7 @@ namespace Cats {
     for(auto anim : value) {
       animations[anim->key] = new Animation(anim->value, filename);
       if(defaultAnimation == "") {
-	defaultAnimation = anim->key;
+        defaultAnimation = anim->key;
       }
     }
 
