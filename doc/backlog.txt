@@ -1,7 +1,6 @@
 Cats++ Backlog
 ==============
 
-* SetWindowTitle
 * MoveSprite
 * LoadFont
 * CreateText
@@ -17,6 +16,7 @@ Work in progress
 Done
 ====
 
+* SetWindowTitle
 * ShowPointer
 * SetFullscreen
 * PauseAnimations

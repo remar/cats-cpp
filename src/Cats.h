@@ -55,6 +55,9 @@ namespace Cats {
   /* TODO: documentation */
   void ShowPointer(bool on);
 
+  /* TODO: documentation */
+  void SetWindowTitle(std::string title);
+
   /** \fn void LoadSprite(std::string filename)
 
       \brief Loads a sprite from the provided JSON file.
