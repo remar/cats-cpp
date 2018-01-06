@@ -14,6 +14,7 @@ namespace Cats {
     void SetVisible(bool show) {visible = show;}
     void SetPosition(int x, int y) {this->x = x; this->y = y;}
     void SetAnimation(std::string animation);
+    void SetPause(bool on);
 
   private:
     SpriteDefinition *spriteDefinition;

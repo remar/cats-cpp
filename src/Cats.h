@@ -165,6 +165,9 @@ namespace Cats {
    */
   void SetAnimation(int spriteId, std::string animation);
 
+  /* TODO: documentation */
+  void PauseAnimation(int spriteId, bool on);
+
   /** \fn void SetupTileLayer(int width, int height, int tileWidth, int tileHeight)
 
       \brief Setup a tile background.

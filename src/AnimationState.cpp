@@ -1,6 +1,8 @@
 #include "AnimationState.h"
 
 namespace Cats {
+  AnimationState::AnimationState() : paused(false) {}
+
   void AnimationState::SetAnimation(Animation *animation) {
     this->animation = animation;
     currentFrame = 0;
@@ -11,7 +13,7 @@ namespace Cats {
   }
 
   void AnimationState::Animate(int deltaMillis) {
-    if(animationDone) {
+    if(animationDone || paused) {
       return;
     }
 
@@ -29,9 +31,9 @@ namespace Cats {
   void AnimationState::NextFrame() {
     if(currentFrame + 1 == animationLength) {
       if(animation->GetLooping()) {
-	currentFrame = 0;
+        currentFrame = 0;
       } else {
-	animationDone = true;
+        animationDone = true;
       }
     } else {
       currentFrame++;

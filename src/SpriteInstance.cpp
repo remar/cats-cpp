@@ -17,4 +17,8 @@ namespace Cats {
   void SpriteInstance::SetAnimation(std::string animation) {
     animationState.SetAnimation(spriteDefinition->GetAnimation(animation));
   }
+
+  void SpriteInstance::SetPause(bool on) {
+    animationState.SetPause(on);
+  }
 }

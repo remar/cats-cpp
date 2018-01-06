@@ -8,9 +8,11 @@
 namespace Cats {
   class AnimationState {
   public:
+    AnimationState();
     void SetAnimation(Animation *animation);
     void Animate(int deltaMillis);
     void Draw(SDL_Renderer *renderer, int x, int y);
+    void SetPause(bool on) { paused = on; }
 
   private:
     Animation* animation;
@@ -19,6 +21,7 @@ namespace Cats {
     int currentFrameDuration;
     int animationLength;
     bool animationDone;
+    bool paused;
 
     void NextFrame();
   };
