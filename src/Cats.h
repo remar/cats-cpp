@@ -60,13 +60,15 @@ namespace Cats {
       "hero.json" means that the sprite will be called "hero".
 
       Each animation is specified as an object, containing the keys
-      "image", "looping" and "frames". "image" contains an object
-      describing the image path and frame dimensions. "looping"
-      indicates whether this animation should loop or not. "frames"
-      contains a list of lists, where each such list points out an
-      index into the image and a duration in milliseconds. A frame
-      index of -1 indicates that the sprite will be hidden during the
-      frames duration.
+      "image", "origin", "looping" and "frames". "image" contains an object
+      describing the image path and frame dimensions. "origin", which is
+      optional, contains the center of each frame as a list of offsets.  If
+      "origin" is missing, it will default to [0, 0] (upper left corner).
+      "looping" indicates whether this animation should loop or not.
+      "frames" contains a list of lists, where each such list points out an
+      index into the image and a duration in milliseconds. A frame index of
+      -1 indicates that the sprite will be hidden during the frames
+      duration.
 
       The images path is relative to the sprite definitions path, so a
       path of just "goomba.png" means that the image will be found as
@@ -82,6 +84,7 @@ namespace Cats {
                 "width":32,
                 "height":32
             },
+            "origin": [16, 16],
             "looping": true,
             "frames": [
                 [0, 100], [1, 150], [2, 100], [1, 150]

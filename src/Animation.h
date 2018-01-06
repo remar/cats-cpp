@@ -26,11 +26,14 @@ namespace Cats {
     std::vector<Frame> frames;
     bool looping;
     SDL_Texture *image;
+    int originX;
+    int originY;
     int tileWidth;
     int tileHeight;
     SDL_Rect src, dest;
 
     void AddImage(JsonValue value, std::string filename);
+    void AddOrigin(JsonValue value, std::string filename);
     void AddFrames(JsonValue value, std::string filename);
   };
 }

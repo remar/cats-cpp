@@ -1,7 +1,6 @@
 Cats++ Backlog
 ==============
 
-* Frame offsets for sprites (origin)
 * PauseAnimation
 * PauseAnimations
 * SetFullscreen
@@ -18,9 +17,11 @@ Work in progress
 ================
 
 
+
 Done
 ====
 
+* Frame offsets for sprites (origin)
 * Document API in Cats.h using Doxygen
 * SetScroll
 * Redraw

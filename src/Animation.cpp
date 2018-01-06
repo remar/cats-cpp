@@ -9,19 +9,22 @@
 namespace Cats {
   extern ImageCache imageCache;
 
-  Animation::Animation(JsonValue value, std::string filename) : looping(true) {
+  Animation::Animation(JsonValue value, std::string filename)
+    : looping(true), originX(0), originY(0) {
     bool gotImage = false;
     bool gotFrames = false;
 
     for(auto obj : value) {
       if(strcmp(obj->key, "image") == 0) {
-	AddImage(obj->value, filename);
-	gotImage = true;
+        AddImage(obj->value, filename);
+        gotImage = true;
+      } else if(strcmp(obj->key, "origin") == 0) {
+        AddOrigin(obj->value, filename);
       } else if(strcmp(obj->key, "looping") == 0) {
-	looping = ((obj->value).getTag() == JSON_TRUE);
+        looping = ((obj->value).getTag() == JSON_TRUE);
       } else if(strcmp(obj->key, "frames") == 0) {
-	AddFrames(obj->value, filename);
-	gotFrames = true;
+        AddFrames(obj->value, filename);
+        gotFrames = true;
       }
     }
 
@@ -40,8 +43,8 @@ namespace Cats {
       return; // Hide sprite instance during frame duration
     }
     src.x = tileWidth * index;
-    dest.x = x;
-    dest.y = y;
+    dest.x = x - originX;
+    dest.y = y - originY;
     SDL_RenderCopy(renderer, image, &src, &dest);
   }
 
@@ -52,14 +55,14 @@ namespace Cats {
 
     for(auto obj : value) {
       if(strcmp(obj->key, "path") == 0) {
-	image = imageCache.GetImage(GetBasePath(filename) + (obj->value).toString());
-	gotPath = true;
+        image = imageCache.GetImage(GetBasePath(filename) + (obj->value).toString());
+        gotPath = true;
       } else if(strcmp(obj->key, "width") == 0) {
-	tileWidth = (obj->value).toNumber();
-	gotWidth = true;
+        tileWidth = (obj->value).toNumber();
+        gotWidth = true;
       } else if(strcmp(obj->key, "height") == 0) {
-	tileHeight = (obj->value).toNumber();
-	gotHeight = true;
+        tileHeight = (obj->value).toNumber();
+        gotHeight = true;
       }
     }
 
@@ -68,21 +71,37 @@ namespace Cats {
     }
   }
 
+  void Animation::AddOrigin(JsonValue value, std::string filename) {
+    JsonNode *node = value.toNode();
+    if((node->value).getTag() != JSON_NUMBER) {
+      throw std::runtime_error("Faulty x origin specification in " + filename);
+    }
+    originX = (node->value).toNumber();
+    node = node->next;
+    if(node == nullptr) {
+      throw std::runtime_error("Missing y origin specification in " + filename);
+    }
+    if((node->value).getTag() != JSON_NUMBER) {
+      throw std::runtime_error("Faulty y origin specification in " + filename);
+    }
+    originY = (node->value).toNumber();
+  }
+
   void Animation::AddFrames(JsonValue value, std::string filename) {
     Frame frame;
 
     for(JsonNode* list : value) {
       JsonNode *elem = (list->value).toNode();
       if((elem->value).getTag() != JSON_NUMBER) {
-	throw std::runtime_error("Faulty frame index specification in " + filename);
+        throw std::runtime_error("Faulty frame index specification in " + filename);
       }
       frame.index = (elem->value).toNumber();
       if(elem->next == nullptr) {
-	throw std::runtime_error("Missing frame duration specification in " + filename);
+        throw std::runtime_error("Missing frame duration specification in " + filename);
       }
       elem = elem->next;
       if((elem->value).getTag() != JSON_NUMBER) {
-	throw std::runtime_error("Faulty frame duration specification in " + filename);
+        throw std::runtime_error("Faulty frame duration specification in " + filename);
       }
       frame.duration = (elem->value).toNumber();
       frames.push_back(frame);
