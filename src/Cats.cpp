@@ -76,6 +76,10 @@ namespace Cats {
     SDL_SetWindowFullscreen(window, on ? SDL_WINDOW_FULLSCREEN_DESKTOP : 0);
   }
 
+  void ShowPointer(bool on) {
+    SDL_ShowCursor(on ? SDL_ENABLE : SDL_DISABLE);
+  }
+
   void LoadSprite(std::string filename) {
     std::string name = FilenameToName(filename);
     spriteDefinitions[name] = std::unique_ptr<SpriteDefinition>(new SpriteDefinition(filename));
