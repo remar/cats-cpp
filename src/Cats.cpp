@@ -72,6 +72,10 @@ namespace Cats {
     SDL_SetRenderDrawColor(renderer, red, green, blue, 0xFF);
   }
 
+  void SetFullscreen(bool on) {
+    SDL_SetWindowFullscreen(window, on ? SDL_WINDOW_FULLSCREEN_DESKTOP : 0);
+  }
+
   void LoadSprite(std::string filename) {
     std::string name = FilenameToName(filename);
     spriteDefinitions[name] = std::unique_ptr<SpriteDefinition>(new SpriteDefinition(filename));

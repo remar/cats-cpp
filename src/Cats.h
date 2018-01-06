@@ -49,6 +49,9 @@ namespace Cats {
    */
   void SetBackgroundColor(unsigned char red, unsigned char green, unsigned char blue);
 
+  /* TODO: documentation */
+  void SetFullscreen(bool on);
+
   /** \fn void LoadSprite(std::string filename)
 
       \brief Loads a sprite from the provided JSON file.
