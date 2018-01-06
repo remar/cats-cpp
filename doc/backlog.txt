@@ -1,6 +1,18 @@
 Cats++ Backlog
 ==============
 
+* Frame offsets for sprites (origin)
+* PauseAnimation
+* PauseAnimations
+* SetFullscreen
+* ShowPointer
+* SetWindowTitle
+* MoveSprite
+* LoadFont
+* CreateText
+* RemoveText
+* Document API with Doxygen
+
 
 Work in progress
 ================
