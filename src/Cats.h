@@ -29,7 +29,7 @@ namespace Cats {
 
       @param height Height of the window in pixels
    */
-  void Init(int width, int height);
+  void Init(int width, int height, float multiplier = 1.0f);
 
   /** \fn void Redraw(float delta)
 

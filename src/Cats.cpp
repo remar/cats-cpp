@@ -28,7 +28,7 @@ namespace Cats {
 
   ImageCache imageCache;
 
-  void Init(int width, int height) {
+  void Init(int width, int height, float multiplier) {
     if(SDL_Init(SDL_INIT_VIDEO) != 0) {
       throw_runtime_error();
     }
@@ -36,7 +36,7 @@ namespace Cats {
     if((window = SDL_CreateWindow("Cats++",
 				  SDL_WINDOWPOS_UNDEFINED,
 				  SDL_WINDOWPOS_UNDEFINED,
-				  width, height,
+				  width * multiplier, height * multiplier,
 				  SDL_WINDOW_SHOWN)) == 0) {
       throw_runtime_error();
     }
