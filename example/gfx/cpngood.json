@@ -1,0 +1,28 @@
+{
+    "animations": {
+	"walk right": {
+	    "image": {
+		"path": "goodright.png",
+		"width": 17,
+		"height": 24
+	    },
+	    "origin": [0, 0],
+	    "looping": true,
+	    "frames": [
+		[1, 50], [2, 50], [3, 50], [0, 50]
+	    ]
+	},
+	"walk left": {
+	    "image": {
+		"path": "goodleft.png",
+		"width": 17,
+		"height": 24
+	    },
+	    "origin": [0, 0],
+	    "looping": true,
+	    "frames": [
+		[1, 50], [2, 50], [3, 50], [0, 50]
+	    ]
+	}
+    }
+}
