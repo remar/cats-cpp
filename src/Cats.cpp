@@ -15,11 +15,11 @@ namespace Cats {
   namespace {
     SDL_Window *window;
     SDL_Renderer *renderer;
-    std::map<std::string,std::unique_ptr<SpriteDefinition>> spriteDefinitions;
-    std::map<int,std::unique_ptr<SpriteInstance>> spriteInstances;
+    std::map<std::string,std::shared_ptr<SpriteDefinition>> spriteDefinitions;
+    std::map<int,std::shared_ptr<SpriteInstance>> spriteInstances;
     int nextSpriteId = 0;
     TileLayer *tileLayer = nullptr;
-    std::map<std::string,std::unique_ptr<Tileset>> tilesets;
+    std::map<std::string,std::shared_ptr<Tileset>> tilesets;
 
     void throw_runtime_error() {
       throw std::runtime_error(SDL_GetError());
@@ -86,13 +86,13 @@ namespace Cats {
 
   void LoadSprite(std::string filename) {
     std::string name = FilenameToName(filename);
-    spriteDefinitions[name] = std::unique_ptr<SpriteDefinition>(new SpriteDefinition(filename));
+    spriteDefinitions[name] = std::shared_ptr<SpriteDefinition>(new SpriteDefinition(filename));
   }
 
   int CreateSpriteInstance(std::string spritename) {
     int spriteId = nextSpriteId;
     nextSpriteId++;
-    spriteInstances[spriteId] = std::unique_ptr<SpriteInstance>(new SpriteInstance(spriteDefinitions.at(spritename).get()));
+    spriteInstances[spriteId] = std::shared_ptr<SpriteInstance>(new SpriteInstance(spriteDefinitions.at(spritename).get()));
     return spriteId;
   }
 
@@ -135,7 +135,7 @@ namespace Cats {
 
   void LoadTileset(std::string filename) {
     std::string name = FilenameToName(filename);
-    tilesets[name] = std::unique_ptr<Tileset>(new Tileset(filename));
+    tilesets[name] = std::shared_ptr<Tileset>(new Tileset(filename));
   }
 
   void SetTile(int x, int y, std::string tileset, int tileX, int tileY) {
