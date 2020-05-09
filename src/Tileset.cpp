@@ -1,4 +1,5 @@
 #include "ImageCache.h"
+#include "ImageJsonReader.h"
 #include "Tileset.h"
 #include "Util.h"
 #include "gason.h"
@@ -50,26 +51,15 @@ namespace Cats {
   }
 
   void Tileset::AddImage(JsonValue value, std::string filename) {
-    bool gotPath = false;
-    bool gotWidth = false;
-    bool gotHeight = false;
+    ImageJsonReader reader(value, filename);
 
-    for(auto obj : value) {
-      if(strcmp(obj->key, "path") == 0) {
-	image = imageCache.GetImage(GetBasePath(filename) + (obj->value).toString());
-	gotPath = true;
-      } else if(strcmp(obj->key, "width") == 0) {
-	width = (obj->value).toNumber();
-	gotWidth = true;
-      } else if(strcmp(obj->key, "height") == 0) {
-	height = (obj->value).toNumber();
-	gotHeight = true;
-      }
-    }
-
-    if(!gotPath || !gotWidth || !gotHeight) {
+    if(!reader.ValidImageJson()) {
       throw std::runtime_error("Incomplete image specification in " + filename);
     }
+
+    image = reader.GetImage();
+    width = reader.GetWidth();
+    height = reader.GetHeight();
   }
 
   void Tileset::SetupSources() {
