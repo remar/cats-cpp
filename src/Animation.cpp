@@ -1,5 +1,6 @@
 #include "Animation.h"
 #include "ImageCache.h"
+#include "ImageJsonReader.h"
 #include "Util.h"
 #include <string.h>
 #include <list>
@@ -49,26 +50,15 @@ namespace Cats {
   }
 
   void Animation::AddImage(JsonValue value, std::string filename) {
-    bool gotPath = false;
-    bool gotWidth = false;
-    bool gotHeight = false;
+    ImageJsonReader reader(value, filename);
 
-    for(auto obj : value) {
-      if(strcmp(obj->key, "path") == 0) {
-        image = imageCache.GetImage(GetBasePath(filename) + (obj->value).toString());
-        gotPath = true;
-      } else if(strcmp(obj->key, "width") == 0) {
-        tileWidth = (obj->value).toNumber();
-        gotWidth = true;
-      } else if(strcmp(obj->key, "height") == 0) {
-        tileHeight = (obj->value).toNumber();
-        gotHeight = true;
-      }
-    }
-
-    if(!gotPath || !gotWidth || !gotHeight) {
+    if(!reader.ValidImageJson()) {
       throw std::runtime_error("Incomplete image specification in " + filename);
     }
+
+    image = reader.GetImage();
+    tileWidth = reader.GetWidth();
+    tileHeight = reader.GetHeight();
   }
 
   void Animation::AddOrigin(JsonValue value, std::string filename) {
