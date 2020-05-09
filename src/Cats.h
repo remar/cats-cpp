@@ -255,6 +255,9 @@ namespace Cats {
 
    */
   void SetScroll(int x, int y);
+
+  /* TODO: documentation */
+  void LoadFont(std::string fontfile);
 }
 
 #endif

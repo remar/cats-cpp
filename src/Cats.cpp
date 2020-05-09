@@ -149,4 +149,9 @@ namespace Cats {
       tileLayer->SetScroll(x, y);
     }
   }
+
+  void LoadFont(std::string filename) {
+    std::string name = FilenameToName(filename);
+    // fonts[name] = std::shared_ptr<Font>(new Font(filename));
+  }
 }

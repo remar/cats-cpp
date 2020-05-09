@@ -1,7 +1,6 @@
 Cats++ Backlog
 ==============
 
-* LoadFont
 * CreateText
 * RemoveText
 * Document API with Doxygen
@@ -10,6 +9,7 @@ Cats++ Backlog
 Work in progress
 ================
 
+* LoadFont
 
 
 Done
