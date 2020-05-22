@@ -85,33 +85,33 @@ namespace Cats {
 
       Example sprite definition:
       <pre>
-{
-    "animations": {
-        "animation 1": {
-            "image": {
-                "path":"path/to/animation.png",
-                "width":32,
-                "height":32
-            },
-            "origin": [16, 16],
-            "looping": true,
-            "frames": [
-                [0, 100], [1, 150], [2, 100], [1, 150]
-            ]
-        },
-        "animation 2": {
-            "image": {
-                "path":"path/to/animation.png",
-                "width":32,
-                "height":32
-            },
-            "looping": true,
-            "frames": [
-                [0, 100], [1, 150], [2, 100], [1, 150]
-            ]
-        }
-    }
-}
+      {
+          "animations": {
+              "animation 1": {
+                  "image": {
+                      "path":"path/to/animation.png",
+                      "width":32,
+                      "height":32
+                  },
+                  "origin": [16, 16],
+                  "looping": true,
+                  "frames": [
+                      [0, 100], [1, 150], [2, 100], [1, 150]
+                  ]
+              },
+              "animation 2": {
+                  "image": {
+                      "path":"path/to/animation.png",
+                      "width":32,
+                      "height":32
+                  },
+                  "looping": true,
+                  "frames": [
+                      [0, 100], [1, 150], [2, 100], [1, 150]
+                  ]
+              }
+          }
+      }
       </pre>
 
       @param filename Relative path to JSON sprite definition file
@@ -215,13 +215,13 @@ namespace Cats {
       to the tileset definition.
 
       <pre>
-{
-    "image": {
-        "path":"path/to/blocks.png",
-        "width":16,
-        "height":16,
-    }
-}
+      {
+          "image": {
+              "path":"path/to/blocks.png",
+              "width":16,
+              "height":16,
+          }
+      }
       </pre>
 
       @param file Relative path to the tileset definition file
