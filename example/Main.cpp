@@ -3,12 +3,16 @@
 #include <list>
 #include <random>
 
+// For compiling libcats.a and then compiling example, in emacs:
+// make -C ../src && make -k && ./example
+
 using namespace std;
 
 const int screenWidth = 640;
 const int screenHeight = 480;
 
 bool quitEvent = false;
+bool fullscreen = false;
 
 void checkForInput() {
   SDL_Event event;
@@ -16,6 +20,11 @@ void checkForInput() {
   while(SDL_PollEvent(&event)) {
     if(event.type == SDL_QUIT) {
       quitEvent = true;
+    } else if(event.type == SDL_KEYDOWN) {
+      if(event.key.keysym.sym == SDLK_f) {
+	fullscreen = !fullscreen;
+	Cats::SetFullscreen(fullscreen);
+      }
     }
   }
 }
@@ -67,7 +76,24 @@ int main(int argc, char *argv[]) {
 
   Cats::Init(screenWidth, screenHeight);
 
+  Cats::ShowPointer(false);
   Cats::LoadSprite("gfx/cpngood.json");
+  Cats::LoadTileset("gfx/block1.json");
+
+  Cats::SetupTileLayer(20, 15, 32, 32);
+
+  for(int x = 1;x < 19;x++) {
+    Cats::SetTile(x, 0, "block1", 1, 0);
+    Cats::SetTile(x, 14, "block1", 1, 0);
+  }
+  for(int y = 1;y < 14;y++) {
+    Cats::SetTile(0, y, "block1", 2, 0);
+    Cats::SetTile(19, y, "block1", 2, 0);
+  }
+  Cats::SetTile(0, 0, "block1", 3, 0);
+  Cats::SetTile(19, 0, "block1", 4, 0);
+  Cats::SetTile(0, 14, "block1", 5, 0);
+  Cats::SetTile(19, 14, "block1", 6, 0);
 
   int lastFrameTime = SDL_GetTicks();
 
