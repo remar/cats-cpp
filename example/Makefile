@@ -6,7 +6,7 @@ CXXFLAGS += -I${CATSDIR} `$(SDL2CONFIG) --cflags` -std=c++11 -ggdb
 OFILES := $(CPPFILES:.cpp=.o)
 
 
-example: ${OFILES}
+example: ${OFILES} ${CATSDIR}/libcats.a
 	$(CXX) -o $@ $^ -L${CATSDIR} -lcats `$(SDL2CONFIG) --libs` -lSDL2_image
 
 -include $(DEPFILES)
