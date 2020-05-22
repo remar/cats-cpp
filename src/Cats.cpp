@@ -1,4 +1,5 @@
 #include "Cats.h"
+#include "Font.h"
 #include "ImageCache.h"
 #include "SpriteDefinition.h"
 #include "SpriteInstance.h"
@@ -20,6 +21,7 @@ namespace Cats {
     int nextSpriteId = 0;
     TileLayer *tileLayer = nullptr;
     std::map<std::string,std::shared_ptr<Tileset>> tilesets;
+    std::map<std::string,std::shared_ptr<Font>> fonts;
 
     void throw_runtime_error() {
       throw std::runtime_error(SDL_GetError());
@@ -152,6 +154,6 @@ namespace Cats {
 
   void LoadFont(std::string filename) {
     std::string name = FilenameToName(filename);
-    // fonts[name] = std::shared_ptr<Font>(new Font(filename));
+    fonts[name] = std::shared_ptr<Font>(new Font(filename));
   }
 }
