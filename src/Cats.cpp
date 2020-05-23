@@ -172,4 +172,8 @@ namespace Cats {
     textInstances[textId] = std::shared_ptr<Text>(new Text(fonts.at(font).get(), text));
     return textId;
   }
+
+  void SetTextPosition(int textId, int x, int y) {
+    textInstances.at(textId)->SetPosition(x, y);
+  }
 }

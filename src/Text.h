@@ -11,6 +11,7 @@ namespace Cats {
   public:
     Text(const Font *font, std::string text);
     void Draw(SDL_Renderer *renderer);
+    void SetPosition(int x, int y);
 
   private:
     SDL_Texture *image;

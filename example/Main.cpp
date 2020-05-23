@@ -97,6 +97,7 @@ int main(int argc, char *argv[]) {
   Cats::SetTile(19, 14, "block1", 6, 0);
 
   int text = Cats::CreateText("font", "Hello world");
+  Cats::SetTextPosition(text, 32, 32);
 
   int lastFrameTime = SDL_GetTicks();
 

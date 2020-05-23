@@ -261,6 +261,9 @@ namespace Cats {
 
   /* TODO: documentation */
   int CreateText(std::string font, std::string text);
+
+  /* TODO: documentation */
+  void SetTextPosition(int textId, int x, int y);
 }
 
 #endif

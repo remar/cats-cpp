@@ -13,6 +13,23 @@ namespace Cats {
     }
   }
 
+  void Text::SetPosition(int x, int y) {
+    if(this->x != 0 || this->y != 0) {
+      for(SDL_Rect &dest : destinations) {
+	dest.x -= this->x;
+	dest.y -= this->y;
+      }
+    }
+
+    this->x = x;
+    this->y = y;
+
+    for(SDL_Rect &dest : destinations) {
+      dest.x += this->x;
+      dest.y += this->y;
+    }
+  }
+
   void Text::InitDestinationRects() {
     if(sources.size() > 0) {
       int width = sources[0].w;
