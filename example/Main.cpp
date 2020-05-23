@@ -15,6 +15,7 @@ bool quitEvent = false;
 bool fullscreen = false;
 bool textVisible = true;
 int text;
+int temporaryText = -1;
 
 void checkForInput() {
   SDL_Event event;
@@ -33,6 +34,15 @@ void checkForInput() {
 	textVisible = !textVisible;
 	Cats::ShowText(text, textVisible);
 	break;
+
+      case SDLK_p:
+	if(temporaryText == -1) {
+	  temporaryText = Cats::CreateText("font", "TEMP");
+	  Cats::SetTextPosition(temporaryText, 304, 236);
+	} else {
+	  Cats::RemoveText(temporaryText);
+	  temporaryText = -1;
+	}
       }
     }
   }

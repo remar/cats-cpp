@@ -267,6 +267,9 @@ namespace Cats {
 
   /* TODO: documentation */
   void ShowText(int textId, bool show);
+
+  /* TODO: documentation */
+  void RemoveText(int textId);
 }
 
 #endif

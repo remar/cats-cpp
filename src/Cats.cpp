@@ -180,4 +180,8 @@ namespace Cats {
   void ShowText(int textId, bool show) {
     textInstances.at(textId)->SetVisible(show);
   }
+
+  void RemoveText(int textId) {
+    textInstances.erase(textId);
+  }
 }

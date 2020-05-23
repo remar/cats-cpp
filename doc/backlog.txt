@@ -7,12 +7,12 @@ Cats++ Backlog
 Work in progress
 ================
 
-* RemoveText
 
 
 Done
 ====
 
+* RemoveText
 * ShowText
 * SetTextPosition
 * CreateText
