@@ -13,6 +13,8 @@ const int screenHeight = 480;
 
 bool quitEvent = false;
 bool fullscreen = false;
+bool textVisible = true;
+int text;
 
 void checkForInput() {
   SDL_Event event;
@@ -21,9 +23,16 @@ void checkForInput() {
     if(event.type == SDL_QUIT) {
       quitEvent = true;
     } else if(event.type == SDL_KEYDOWN) {
-      if(event.key.keysym.sym == SDLK_f) {
+      switch(event.key.keysym.sym) {
+      case SDLK_f:
 	fullscreen = !fullscreen;
 	Cats::SetFullscreen(fullscreen);
+	break;
+
+      case SDLK_v:
+	textVisible = !textVisible;
+	Cats::ShowText(text, textVisible);
+	break;
       }
     }
   }
@@ -96,7 +105,7 @@ int main(int argc, char *argv[]) {
   Cats::SetTile(0, 14, "block1", 5, 0);
   Cats::SetTile(19, 14, "block1", 6, 0);
 
-  int text = Cats::CreateText("font", "Hello world");
+  text = Cats::CreateText("font", "Hello world");
   Cats::SetTextPosition(text, 32, 32);
 
   int lastFrameTime = SDL_GetTicks();

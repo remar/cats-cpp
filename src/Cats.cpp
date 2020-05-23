@@ -176,4 +176,8 @@ namespace Cats {
   void SetTextPosition(int textId, int x, int y) {
     textInstances.at(textId)->SetPosition(x, y);
   }
+
+  void ShowText(int textId, bool show) {
+    textInstances.at(textId)->SetVisible(show);
+  }
 }

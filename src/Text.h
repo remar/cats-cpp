@@ -12,6 +12,7 @@ namespace Cats {
     Text(const Font *font, std::string text);
     void Draw(SDL_Renderer *renderer);
     void SetPosition(int x, int y);
+    void SetVisible(bool show) {visible = show;}
 
   private:
     SDL_Texture *image;
@@ -19,6 +20,7 @@ namespace Cats {
     int y;
     std::vector<SDL_Rect> sources;
     std::vector<SDL_Rect> destinations;
+    bool visible;
 
     void InitDestinationRects();
   };

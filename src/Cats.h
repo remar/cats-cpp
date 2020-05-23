@@ -264,6 +264,9 @@ namespace Cats {
 
   /* TODO: documentation */
   void SetTextPosition(int textId, int x, int y);
+
+  /* TODO: documentation */
+  void ShowText(int textId, bool show);
 }
 
 #endif

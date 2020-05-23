@@ -1,13 +1,16 @@
 #include "Text.h"
 
 namespace Cats {
-  Text::Text(const Font *font, std::string text) : x{0}, y{0} {
+  Text::Text(const Font *font, std::string text) : x{0}, y{0}, visible{true} {
     sources = font->RenderText(text);
     image = font->GetImage();
     InitDestinationRects();
   }
 
   void Text::Draw(SDL_Renderer *renderer) {
+    if(!visible) {
+      return;
+    }
     for(unsigned int i = 0;i < sources.size();i++) {
       SDL_RenderCopy(renderer, image, &sources[i], &destinations[i]);
     }
