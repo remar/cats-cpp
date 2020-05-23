@@ -13,6 +13,13 @@ namespace Cats {
     Font(std::string filename);
 
   private:
+    SDL_Texture *image;
+    int imageWidth;
+    int imageHeight;
+    int tileWidth;
+    int tileHeight;
+    std::string characters;
+
     void AddImage(JsonValue value, std::string filename);
     void AddCharacters(JsonValue value, std::string filename);
   };

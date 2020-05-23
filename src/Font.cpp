@@ -1,4 +1,5 @@
 #include "Font.h"
+#include "ImageJsonReader.h"
 #include "Util.h"
 #include "gason.h"
 
@@ -28,11 +29,23 @@ namespace Cats {
     if(!gotImage || !gotCharacters) {
       throw std::runtime_error("Incomplete font specification in " + filename);
     }
+
+    SDL_QueryTexture(image, NULL, NULL, &imageWidth, &imageHeight);
   }
 
   void Font::AddImage(JsonValue value, std::string filename) {
+    ImageJsonReader reader(value, filename);
+
+    if(!reader.ValidImageJson()) {
+      throw std::runtime_error("Incomplete image specification in " + filename);
+    }
+
+    image = reader.GetImage();
+    tileWidth = reader.GetWidth();
+    tileHeight = reader.GetHeight();
   }
 
   void Font::AddCharacters(JsonValue value, std::string filename) {
+    characters = value.toString();
   }
 }
