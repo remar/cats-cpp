@@ -3,6 +3,7 @@
 #include "ImageCache.h"
 #include "SpriteDefinition.h"
 #include "SpriteInstance.h"
+#include "Text.h"
 #include "TileLayer.h"
 #include "Tileset.h"
 #include "Util.h"
@@ -19,9 +20,13 @@ namespace Cats {
     std::map<std::string,std::shared_ptr<SpriteDefinition>> spriteDefinitions;
     std::map<int,std::shared_ptr<SpriteInstance>> spriteInstances;
     int nextSpriteId = 0;
+
     TileLayer *tileLayer = nullptr;
     std::map<std::string,std::shared_ptr<Tileset>> tilesets;
+
     std::map<std::string,std::shared_ptr<Font>> fonts;
+    std::map<int,std::shared_ptr<Text>> textInstances;
+    int nextTextId = 0;
 
     void throw_runtime_error() {
       throw std::runtime_error(SDL_GetError());
@@ -65,6 +70,10 @@ namespace Cats {
 
     for(auto const& spriteInstance : spriteInstances) {
       (spriteInstance.second)->Draw(renderer, deltaMillis);
+    }
+
+    for(auto const& textInstance : textInstances) {
+      (textInstance.second)->Draw(renderer);
     }
 
     SDL_RenderPresent(renderer);
@@ -155,5 +164,12 @@ namespace Cats {
   void LoadFont(std::string filename) {
     std::string name = FilenameToName(filename);
     fonts[name] = std::shared_ptr<Font>(new Font(filename));
+  }
+
+  int CreateText(std::string font, std::string text) {
+    int textId = nextTextId;
+    nextTextId++;
+    textInstances[textId] = std::shared_ptr<Text>(new Text(fonts.at(font).get(), text));
+    return textId;
   }
 }

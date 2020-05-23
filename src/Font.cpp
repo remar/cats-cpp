@@ -33,6 +33,26 @@ namespace Cats {
     SDL_QueryTexture(image, NULL, NULL, &imageWidth, &imageHeight);
   }
 
+  std::vector<SDL_Rect> Font::RenderText(std::string text) const {
+    std::vector<SDL_Rect> chars;
+
+    for(char &c : text) {
+      chars.push_back(RenderCharacter(c));
+    }
+
+    return chars;
+  }
+
+  SDL_Rect Font::RenderCharacter(char c) const {
+    SDL_Rect rect = {0, 0, tileWidth, tileHeight};
+    int pos = characters.find(c) * tileWidth;
+    if(pos >= 0) {
+      rect.x = pos%imageWidth;
+      rect.y = (pos/imageWidth)*tileHeight;
+    }
+    return rect;
+  }
+
   void Font::AddImage(JsonValue value, std::string filename) {
     ImageJsonReader reader(value, filename);
 

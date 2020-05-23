@@ -96,6 +96,8 @@ int main(int argc, char *argv[]) {
   Cats::SetTile(0, 14, "block1", 5, 0);
   Cats::SetTile(19, 14, "block1", 6, 0);
 
+  int text = Cats::CreateText("font", "Hello world");
+
   int lastFrameTime = SDL_GetTicks();
 
   list<CaptainGood> cpngoods;

@@ -258,6 +258,9 @@ namespace Cats {
 
   /* TODO: documentation */
   void LoadFont(std::string fontfile);
+
+  /* TODO: documentation */
+  int CreateText(std::string font, std::string text);
 }
 
 #endif

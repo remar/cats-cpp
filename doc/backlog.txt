@@ -1,7 +1,7 @@
 Cats++ Backlog
 ==============
 
-* CreateText
+* ShowText
 * RemoveText
 * Document API with Doxygen
 
@@ -9,12 +9,14 @@ Cats++ Backlog
 Work in progress
 ================
 
-* LoadFont
+* SetTextPosition
 
 
 Done
 ====
 
+* CreateText
+* LoadFont
 * MoveSprite
 * SetWindowTitle
 * ShowPointer
