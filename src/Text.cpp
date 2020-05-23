@@ -4,6 +4,16 @@ namespace Cats {
   Text::Text(const Font *font, std::string text) : x{0}, y{0} {
     sources = font->RenderText(text);
     image = font->GetImage();
+    InitDestinationRects();
+  }
+
+  void Text::Draw(SDL_Renderer *renderer) {
+    for(unsigned int i = 0;i < sources.size();i++) {
+      SDL_RenderCopy(renderer, image, &sources[i], &destinations[i]);
+    }
+  }
+
+  void Text::InitDestinationRects() {
     if(sources.size() > 0) {
       int width = sources[0].w;
       int height = sources[0].h;
@@ -11,12 +21,6 @@ namespace Cats {
 	SDL_Rect dest = {i*width, 0, width, height};
 	destinations.push_back(dest);
       }
-    }
-  }
-
-  void Text::Draw(SDL_Renderer *renderer) {
-    for(unsigned int i = 0;i < sources.size();i++) {
-      SDL_RenderCopy(renderer, image, &sources[i], &destinations[i]);
     }
   }
 }

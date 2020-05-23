@@ -18,6 +18,8 @@ namespace Cats {
     int y;
     std::vector<SDL_Rect> sources;
     std::vector<SDL_Rect> destinations;
+
+    void InitDestinationRects();
   };
 }
 
