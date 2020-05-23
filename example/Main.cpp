@@ -79,6 +79,7 @@ int main(int argc, char *argv[]) {
   Cats::ShowPointer(false);
   Cats::LoadSprite("gfx/cpngood.json");
   Cats::LoadTileset("gfx/block1.json");
+  Cats::LoadFont("gfx/font.json");
 
   Cats::SetupTileLayer(20, 15, 32, 32);
 
